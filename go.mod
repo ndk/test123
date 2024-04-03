@@ -1,4 +1,4 @@
-module github.com/ankorstore/yokai-http-template
+module github.com/ndk/test123
 
 go 1.22
 

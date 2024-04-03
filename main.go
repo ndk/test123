@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ankorstore/yokai-http-template/cmd"
+	"github.com/ndk/test123/cmd"
 )
 
 func main() {
