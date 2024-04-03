@@ -54,8 +54,8 @@ modules:
           request_path: true
           response_status: true
   log:
-    level: info
-    output: stdout
+    level: trace
+    output: console
   trace:
     processor:
       type: noop

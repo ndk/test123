@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+    title: Translator service
+    version: 0.0.1
+paths:
+    /translate:
+        post:
+            summary: Translate an source text from source locale to target locale
+            operationId: translate
+            requestBody:
+                $ref: "#/components/requestBodies/TranslateRequest"
+            responses:
+                "200":
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/TranslateResponse"
+components:
+    schemas:
+        TranslateRequest:
+            required:
+                - sourceText
+                - sourceLocale
+                - targetLocale
+            type: object
+            properties:
+                sourceText:
+                    type: string
+                    example: "Hello world!"
+                sourceLocale:
+                    type: string
+                    example: "en"
+                targetLocale:
+                    type: string
+                    example: "fr"
+        TranslateResponse:
+            type: object
+            properties:
+                targetText:
+                    type: string
+                    example: "Bonjour le monde!"
+    requestBodies:
+        TranslateRequest:
+            description: Translation request body
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/TranslateRequest"

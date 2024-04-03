@@ -1,0 +1,9 @@
+###
+POST http://localhost:8080/translate
+Content-Type: application/json
+
+{
+  "sourceText": "Hello world!",
+  "sourceLocale": "en",
+  "targetLocale": "fr"
+}

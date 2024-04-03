@@ -1,28 +1,28 @@
 package handler
 
 import (
-	"fmt"
-	"net/http"
+	"context"
 
 	"github.com/ankorstore/yokai/config"
-	"github.com/labstack/echo/v4"
+	"github.com/ankorstore/yokai/log"
+	"github.com/ndk/test123/spec"
 )
 
-// ExampleHandler is an example HTTP handler.
-type ExampleHandler struct {
+func optString(s string) *string {
+	return &s
+}
+
+type apiExample struct {
 	config *config.Config
 }
 
-// NewExampleHandler returns a new [ExampleHandler].
-func NewExampleHandler(config *config.Config) *ExampleHandler {
-	return &ExampleHandler{
-		config: config,
-	}
+func (a *apiExample) Translate(ctx context.Context, request spec.TranslateRequestObject) (spec.TranslateResponseObject, error) {
+	log.CtxLogger(ctx).Info().Msg("kill all humans")
+	return spec.Translate200JSONResponse{
+		TargetText: optString("Bonjour le monde!"),
+	}, nil
 }
 
-// Handle handles HTTP requests.
-func (h *ExampleHandler) Handle() echo.HandlerFunc {
-	return func(c echo.Context) error {
-		return c.String(http.StatusOK, fmt.Sprintf("Welcome to %s.", h.config.AppName()))
-	}
+func NewAPI(config *config.Config) *apiExample {
+	return &apiExample{config: config}
 }
