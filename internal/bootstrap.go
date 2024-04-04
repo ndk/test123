@@ -17,8 +17,6 @@ func newBootstrapper() *fxcore.Bootstrapper {
 		fxhttpserver.FxHttpServerModule,
 		// dependencies registration
 		Register(),
-		// routing registration
-		Router(),
 	)
 }
 
