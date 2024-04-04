@@ -58,4 +58,6 @@ modules:
     output: console
   trace:
     processor:
-      type: noop
+      type: otlp-grpc
+      options:
+        host: 127.0.0.1:4317
